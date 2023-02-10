@@ -1,0 +1,71 @@
+{% set active_page = "outgoing" %}
+{% extends "dh/header.html" %}
+{% block index %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Outgoing Forms</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                    	<th>Form Type</th>
+                    	<th>Date</th>
+                    	<th>Applicant Name</th>
+                    	<th>Status</th>
+                    	<th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{% for i in travel %}
+                	<tr>
+                		<td>Travel Form</td>
+                		<td>{{i[5]}}</td>
+                		<td>{{i[2]}}</td>
+                			{% if i[18] != 'APPROVED' %}
+                				<td class="text-danger">PENDING FOR {{i[18]}}</td>
+                			{% else %}
+                				<td class="text-success">{{i[18]}}</td>
+                			{% endif %}
+                		<td>
+                			<a href="/dh_view_travel_order_form/{{i[0]}}" class="btn btn-info"><i class="fas fa-eye"></i>  View</a>
+                		</td>
+                	</tr>
+                	{% endfor %}
+					{% for i in leave %}
+                	<tr>
+                		<td>Leave Application</td>
+                		<td>{{i[4]}}</td>
+                		<td>{{i[2]}}</td>
+                			{% if i[16] != 'APPROVED' %}
+                				<td class="text-danger">PENDING FOR {{i[16]}}</td>
+                			{% else %}
+                				<td class="text-success">{{i[16]}}</td>
+                			{% endif %}
+                		<td>
+                			<a href="/dh_view_leave_form/{{i[0]}}" class="btn btn-info"><i class="fas fa-eye"></i>  View</a>
+                		</td>
+                	</tr>
+                	{% endfor %}
+					{% for i in overtime %}
+                	<tr>
+                		<td>Overtime</td>
+                		<td>{{i[4]}}</td>
+                		<td>{{i[2]}}</td>
+                			{% if i[16] != 'APPROVED' %}
+                				<td class="text-danger">PENDING FOR {{i[16]}}</td>
+                			{% else %}
+                				<td class="text-success">{{i[16]}}</td>
+                			{% endif %}
+                		<td>
+                			<a href="/dh_view_overtime_authorization/{{i[0]}}" class="btn btn-info"><i class="fas fa-eye"></i>  View</a>
+                		</td>
+                	</tr>
+                	{% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

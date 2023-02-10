@@ -1,0 +1,91 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/routing">
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3" style="line-height: 1.1;">HR Online Application Forms</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li {% if active_page=="index" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Fill-up Forms
+    </div>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li {% if active_page=="travel_form" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/travel_order_form">
+            <i class="fas fa-fw fa-car"></i>
+            <span>Travel Order Form</span></a>
+    </li>
+
+    <li {% if active_page=="leave_form" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/leave_form">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Leave Form</span></a>
+    </li>
+
+    <li {% if active_page=="overtime_authorization" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/overtime_authorization">
+            <i class="fas fa-fw fa-clock"></i>
+            <span>Overtime Authorization</span></a>
+    </li>
+    
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Pending Applications
+    </div>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li {% if active_page=="pending_travel" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/view_vpadmin_travel_order_forms">
+            <i class="fas fa-fw fa-list-alt"></i>
+            <span>Travel Orders</span></a>
+    </li>
+
+    <li {% if active_page=="outgoing" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/outgoing">
+            <i class="fas fa-fw fa-list-alt"></i>
+            <span>Outgoing</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Personal
+    </div>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li {% if active_page=="my_forms" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/my_forms">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>My Forms</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+
+</ul>

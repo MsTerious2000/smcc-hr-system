@@ -1,0 +1,44 @@
+{% set active_page = "pending_travel" %}
+{% extends "VP/header.html" %}
+{% block index %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Travel Order Forms</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                    	<th>FORM ID</th>
+                    	<th>Travel Date</th>
+                    	<th>Applicant Name</th>
+                    	<th>Destination/Area</th>
+                    	<th>Status</th>
+                    	<th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{% for i in data %}
+                	<tr>
+                		<td>{{i[0]}}</td>
+                		<td>{{i[5]}}</td>
+                		<td>{{i[2]}}</td>
+                		<td>{{i[8]}}</td>
+                		
+                			{% if i[18] != 'APPROVED' %}
+                				<td class="text-danger">PENDING FOR {{i[18]}}</td>
+                			{% else %}
+                				<td class="text-success">{{i[18]}}</td>
+                			{% endif %}
+                		<td>
+                			<a href="/vp_view_travel_order_form/{{i[0]}}" class="btn btn-info"><i class="fas fa-eye"></i>  View</a>
+                		</td>
+                	</tr>
+                	{% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

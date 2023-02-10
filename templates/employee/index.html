@@ -1,0 +1,22 @@
+{% set active_page = "index" %}
+{% extends "employee/header.html" %}
+{% block index %}
+	<div class="row">
+		<div class="col-lg-5 mb-4">
+			<!-- Approach -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Remaining Leave</h6>
+				</div>
+				<div class="card-body">
+					<p>(SIL) Service Incentive Leave ({{ remaining_leave[0][2] }} days remaining)</p>
+					<p>(SL) Study Leave</p>
+					<p>(ML) Maternity Leave ({{ remaining_leave[0][3] }} days remaining)</p>
+					<p>(PL) Paternity Leave ({{ remaining_leave[0][4] }} days remaining)</p>
+					<p>(PLSP) Parental Leave for Solo Parent ({{ remaining_leave[0][5] }} days remaining)</p>
+					<p>Sick Leave ({{ remaining_leave[0][6] }} days remaining)</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

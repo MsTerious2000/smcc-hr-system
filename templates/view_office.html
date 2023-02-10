@@ -1,0 +1,110 @@
+{% set active_page = "view_office" %}
+{% extends "header.html" %}
+{% block index %}
+<div class="card shadow mb-4">
+	<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+		<h6 class="m-0 font-weight-bold text-primary">Office</h6>
+		<a href="#" data-toggle="modal" data-target="#addOffice" class="btn btn-info btn-sm btn-circle">
+			<i class="fas fa-plus"></i>
+		</a>
+	</div>
+	<!-- Card Body -->
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Offices</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in data %}
+					<tr>
+						<td>{{i[0]}}</td>
+						<td>{{i[1]}}</td>
+						<td>
+							{% if i[2] == 'Active' %}
+							<span class="badge badge-success">{{i[2]}}</span>
+							{% else %}
+							<span class="badge badge-danger">{{i[2]}}</span>
+							{% endif %}
+						</td>
+						<td>
+							<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit{{i[0]}}">Edit</button>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- Add Office Modal -->
+<div class="modal fade" id="addOffice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add Office</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<form action="/add_office" method="POST">
+				<div class="modal-body">
+					<input type="text" name="office" class="form-control" placeholder="Office" required>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</div>
+{% for i in data %}
+	<!-- Edit Office Modal -->
+	<div class="modal fade" id="edit{{i[0]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Edit Office</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<form action="/edit_office" method="POST">
+					<div class="modal-body">
+						<input type="hidden" name="id" value="{{i[0]}}">
+						<input type="text" name="office" class="form-control" value="{{i[1]}}" placeholder="Office" required>
+						<select class="form-control" name="status" required>
+                            <option selected value="" disabled hidden>Status</option>
+							{% if i[2] == 'Active' %}
+								<option selected>Active</option>
+							{% else %}
+								<option>Active</option>
+							{% endif %}
+	
+							{% if i[2] == 'Inactive' %}
+								<option selected>Inactive</option>
+							{% else %}
+								<option>Inactive</option>
+							{% endif %}
+                        </select>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+{% endfor %}
+
+{% endblock %}

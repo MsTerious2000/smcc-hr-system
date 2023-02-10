@@ -1,0 +1,159 @@
+{% set active_page = "my_forms" %}
+{% extends "VP-ADMIN/header.html" %}
+{% block index %}
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class='nav-item'>
+        <a class='nav-link active' data-toggle='tab' href='#s1'>Leave</a>
+    </li>
+    <li class='nav-item'>
+        <a class='nav-link ' data-toggle='tab' href='#s2'>Travel</a>
+    </li>
+    <li class='nav-item'>
+        <a class='nav-link ' data-toggle='tab' href='#s3'>Overtime</a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class='tab-pane container fade in show active' id='s1'>
+        <div class="card shadow mt-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Leave Forms</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fullname</th>
+                                <th>Inclusive Dates</th>
+                                <th>Reason</th>
+                                <th>Nature of Leave</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in leave %}
+                            <tr>
+                                <td>{{i[0]}}</td>
+                                <td>{{i[2]}}</td>
+                                <td>{{i[6]}} - {{i[7]}}</td>
+                                <td>{{i[5]}}</td>
+                                <td>{{i[8]}}</td>
+                                {% if i[16] != 'APPROVED' and i[16] != 'DISAPPROVED' %}
+                                    <td class="text-danger">PENDING FOR {{i[16]}}</td>
+                                {% elif i[16] == 'APPROVED' %}
+                                    <td class="text-success">{{i[16]}}</td>
+                                {% elif i[16] == 'DISAPPROVED' %}
+                                    <td class="text-danger">{{i[16]}}</td>
+                                {% endif %}
+                                <td>
+                                    <a href="/view_leave_form/{{i[0]}}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i>  View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='tab-pane container fade' id='s2'>
+        <div class="card shadow mt-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Travel Orders</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="travel" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fullname</th>
+                                <th>Travel Date</th>
+                                <th>Reason</th>
+                                <th>Destination</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in travel %}
+                            <tr>
+                                <td>{{i[0]}}</td>
+                                <td>{{i[2]}}</td>
+                                <td>{{i[5]}}</td>
+                                <td>{{i[7]}}</td>
+                                <td>{{i[8]}}</td>
+                                {% if i[18] != 'APPROVED' and i[18] != 'DISAPPROVED' %}
+                                    <td class="text-danger">PENDING FOR {{i[18]}}</td>
+                                {% elif i[18] == 'APPROVED' %}
+                                    <td class="text-success">{{i[18]}}</td>
+                                {% elif i[18] == 'DISAPPROVED' %}
+                                    <td class="text-danger">{{i[18]}}</td>
+                                {% endif %}
+                                <td>
+                                    <a href="/view_travel_order_form/{{i[0]}}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i>  View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='tab-pane container fade' id='s3'>
+        <div class="card shadow mt-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Overtime Forms</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="overtime" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fullname</th>
+                                <th>Overtime</th>
+                                <th>Reason</th>
+                                <th>Total Hours</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in overtime %}
+                            <tr>
+                                <td>{{i[0]}}</td>
+                                <td>{{i[2]}}</td>
+                                <td>{{i[5]}}</td>
+                                <td>{{i[7]}}</td>
+                                <td>{{i[11]}}</td>
+                                {% if i[16] != 'APPROVED' and i[16] != 'DISAPPROVED' %}
+                                    <td class="text-danger">PENDING FOR {{i[16]}}</td>
+                                {% elif i[16] == 'APPROVED' %}
+                                    <td class="text-success">{{i[16]}}</td>
+                                {% elif i[16] == 'DISAPPROVED' %}
+                                    <td class="text-danger">{{i[16]}}</td>
+                                {% endif %}
+                                <td>
+                                    <a href="/view_overtime_authorization/{{i[0]}}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i>  View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

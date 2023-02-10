@@ -1,0 +1,113 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">HR Online Application Forms</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li {% if active_page=="index" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Forms
+    </div>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li {% if active_page=="view_employee" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/my_forms">
+            <i class="fas fa-fw fa-file"></i>
+            <span>All Forms</span></a>
+        <!-- <a class="nav-link" href="#" data-toggle="modal" data-target="#addEmployee">
+            <i class="fas fa-fw fa-user-plus"></i>
+            <span>Add Employee</span></a> -->
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Employee
+    </div>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li {% if active_page=="view_employee" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/view_employees">
+            <i class="fas fa-fw fa-users"></i>
+            <span>View Employees</span></a>
+        <!-- <a class="nav-link" href="#" data-toggle="modal" data-target="#addEmployee">
+            <i class="fas fa-fw fa-user-plus"></i>
+            <span>Add Employee</span></a> -->
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Report
+    </div>
+
+    <!-- Nav Item - Dashboard -->
+    <li {% if active_page=="report" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/report">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Transactions</span></a>
+    </li>
+    <li {% if active_page=="report_remaining_leave" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/report_remaining_leave">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Remaining</span></a>
+    </li>
+    <li {% if active_page=="report_travel" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/report_travel">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Travel</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Libraries
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+
+    <!-- Nav Item - Charts -->
+    <li {% if active_page=="view_department" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/view_department">
+            <i class="fas fa-fw fa-building"></i>
+            <span>Department</span></a>
+    </li>
+    <li {% if active_page=="view_office" %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/view_office">
+            <i class="fas fa-fw fa-suitcase"></i>
+            <span>Office</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+
+</ul>
